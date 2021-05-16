@@ -37,3 +37,12 @@ for i in range(0, 19):
     numbers.append_left(i)
 
 print(numbers, f'length={len(numbers)}')
+
+for i in range(0, len(numbers) - 1):
+    numbers.pop()
+
+print(numbers, f'length={len(numbers)}')
+
+numbers.remove_first()
+
+print(numbers, f'length={len(numbers)}')

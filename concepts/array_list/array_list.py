@@ -45,8 +45,6 @@ class ArrayList:
         self._capacity = len(self._data)
 
     def remove(self, item):
-        if self._is_more_then_half_empty():
-            self._reduce_size()
         remove_index = -1
         for i in range(0, len(self)):
             if item == self._data[i]:
@@ -56,6 +54,22 @@ class ArrayList:
             raise Exception("No Item found!")
         self._data = self._data[0:remove_index] + self._data[remove_index+1:]
         self._last_element_index -= 1
+        if self._is_more_then_half_empty():
+            self._reduce_size()
+
+    def remove_first(self):
+        if self._last_element_index >= 0:
+            self._data = self._data[1:]
+            self._last_element_index -= 1
+        if self._is_more_then_half_empty():
+            self._reduce_size()
+
+    def pop(self):
+        if self._last_element_index >= 0:
+            self._data = self._data[0:self._last_element_index]
+            self._last_element_index -= 1
+        if self._is_more_then_half_empty():
+            self._reduce_size()
 
     def insert(self, index, item):
         if index > len(self) or index < 0:

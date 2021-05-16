@@ -72,6 +72,28 @@ class LinkedList:
                 break
             curr = curr.next_node
 
+    def remove_first(self):
+        if self._head is None:
+            return
+        if self._head is self._tail:
+            del self._head
+            self._head = None
+            self._tail = None
+            return
+        self._head = self._head.next_node
+        self._head.set_prev_node(None)
+
+    def pop(self):
+        if self._tail is None:
+            return
+        if self._head is self._tail:
+            del self._head
+            self._head = None
+            self._tail = None
+            return
+        self._tail = self._tail.prev_node
+        self._tail.set_next_node(None)
+
     def __iter__(self):
         self._curr = self._head
         return self
