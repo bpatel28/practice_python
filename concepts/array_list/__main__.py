@@ -1,4 +1,4 @@
-from array_list import ArrayList
+from concepts.array_list import ArrayList
 
 numbers = ArrayList()
 
