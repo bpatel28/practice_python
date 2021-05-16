@@ -27,6 +27,13 @@ class ArrayList:
             self._last_element_index += 1
         self._data[self._last_element_index] = item
 
+    def append_left(self, item):
+        if self._is_full():
+            self._grow_size()
+        if self._last_element_index < self._capacity:
+            self._last_element_index += 1
+        self._data = [item] + self._data
+
     def _is_more_then_half_empty(self):
         return len(self) * 2 <= self._capacity
 

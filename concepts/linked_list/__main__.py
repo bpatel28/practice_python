@@ -28,3 +28,12 @@ print()
 for num in numbers:
     print(num, end=", ")
 print()
+
+numbers.append_left(-1)
+numbers.append_left(-2)
+numbers.append_left(-3)
+
+for i in range(0, 19):
+    numbers.append_left(i)
+
+print(numbers, f'length={len(numbers)}')

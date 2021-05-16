@@ -29,8 +29,6 @@ class LinkedList:
         self._tail = val
 
     def append(self, item):
-        if item is None:
-            return
         if type(item) is not LinkedListNode:
             item = LinkedListNode(item)
         if self._tail is None:
@@ -40,6 +38,17 @@ class LinkedList:
             item.set_prev_node(self._tail)
             self._tail.set_next_node(item)
             self._tail = item
+
+    def append_left(self, item):
+        if type(item) is not LinkedListNode:
+            item = LinkedListNode(item)
+        if self._head is None:
+            self._head = item
+            self._tail = item
+        else:
+            item.set_next_node(self._head)
+            self._head.set_prev_node(item)
+            self._head = item
 
     def remove(self, item):
         if item is None:
