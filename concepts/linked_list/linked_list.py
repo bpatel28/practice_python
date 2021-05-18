@@ -75,13 +75,15 @@ class LinkedList:
     def remove_first(self):
         if self._head is None:
             return
+        data = self._head.data
         if self._head is self._tail:
             del self._head
             self._head = None
             self._tail = None
-            return
+            return data
         self._head = self._head.next_node
         self._head.set_prev_node(None)
+        return data
 
     def pop(self):
         if self._tail is None:
