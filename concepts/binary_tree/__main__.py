@@ -1,4 +1,4 @@
-from concepts.tree.binary_tree import BinaryTree, Node
+from concepts.binary_tree.binary_tree import BinaryTree, Node
 
 root = Node(25)
 

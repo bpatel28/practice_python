@@ -41,10 +41,7 @@ class Node:
 
 class BinaryTree:
     def __init__(self, root=None):
-        if root:
-            self._root = root
-        else:
-            self._root = Node()
+        self._root = root
 
     def add_item(self, item):
         if self._root is None:
