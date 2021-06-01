@@ -37,42 +37,35 @@ class BinarySearchTree(BinaryTree):
         else:
             return self._contains(node.right_child, item)
 
+    @staticmethod
+    def min_value_node(node):
+        current = node
+        while current and current.left_child is not None:
+            current = current.left_child
+        return current
+
     def remove(self, item):
-        if self._root and self._root.data == item:
-            if self._root.right_child:
-                delete_node = self._root
-                self._root = self._root.right_child
-                self._append_left_tree(self._root, delete_node.left_child)
-            else:
-                self._root = self._root.left_child
         self._remove(self._root, item)
 
-    def _remove(self, node, item):
-        if node is None:
-            return
-        if node.left_child and node.left_child.data == item:
-            delete_node = node.left_child
-            if delete_node.right_child:
-                node.set_left_child(delete_node.right_child)
-                left_tree = delete_node.left_child
-                self._append_left_tree(node.left_child, left_tree)
-            else:
-                node.set_left_child(delete_node.left_child)
-            return
-        elif node.right_child and node.right_child.data == item:
-            delete_node = node.right_child
-            if delete_node.right_child:
-                node.set_right_child(delete_node.right_child)
-                left_tree = delete_node.left_child
-                self._append_left_tree(node.left_child, left_tree)
-            else:
-                node.set_right_child(delete_node.left_child)
-            return
-        if item < node.data:
-            self._remove(node.left_child, item)
-        else:
-            self._remove(node.right_child, item)
+    def _remove(self, root, item):
+        if root is None:
+            return root
 
-    @staticmethod
-    def _find_min_value(root):
-        pass
+        if item < root.data:
+            root.set_left_child(self._remove(root.left_child, item))
+        elif item > root.data:
+            root.set_right_child(self._remove(root.right_child, item))
+        else:
+            if root.left_child is None:
+                temp = root.right_child
+                root = None
+                return temp
+            elif root.right_child is None:
+                temp = root.left_child
+                root = None
+                return temp
+            else:
+                temp = self.min_value_node(root.right_child)
+                root.set_data(temp.data)
+                root.set_right_child(self._remove(root.right_child, temp.data))
+        return root

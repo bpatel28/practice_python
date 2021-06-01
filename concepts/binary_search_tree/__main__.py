@@ -24,7 +24,10 @@ tree.add_item(90)
 
 print(tree.level_order_items())
 
-tree.remove(50)
+tree.remove(25)
+tree.remove(10)
+tree.remove(60)
+tree.remove(90)
 
 print(tree.level_order_items())
 
