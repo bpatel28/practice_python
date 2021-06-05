@@ -88,13 +88,15 @@ class LinkedList:
     def pop(self):
         if self._tail is None:
             return
+        last_data = self._tail.data
         if self._head is self._tail:
             del self._head
             self._head = None
             self._tail = None
-            return
+            return last_data
         self._tail = self._tail.prev_node
         self._tail.set_next_node(None)
+        return last_data
 
     def __iter__(self):
         self._curr = self._head
