@@ -1,4 +1,4 @@
-from object_oriented_design.hand import Hand
+from object_oriented_design.deck_of_cards.hand import Hand
 
 
 class BlackJackHand(Hand):

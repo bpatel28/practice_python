@@ -1,5 +1,5 @@
-from object_oriented_design.card import Card
-from object_oriented_design.rank import Rank
+from object_oriented_design.deck_of_cards.card import Card
+from object_oriented_design.deck_of_cards.rank import Rank
 
 
 class BlackJackCard(Card):
