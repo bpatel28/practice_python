@@ -112,12 +112,24 @@ def outline_tree(root, items):
         if len(level) != 0:
             queue.append(level)
 
+def height(root):
+    if not root:
+        return 1
+    left_height = 1
+    if root.left:
+        left_height = height(root.left) + 1
+    right_height = 1
+    if root.right:
+        right_height = height(root.right) + 1
+    return left_height if left_height > right_height else right_height
+
 
 root = Node(1, Node(2, Node(4), Node(5)), Node(3, Node(6), Node(7)))
 
 tree_items = []
 outline_tree(root, tree_items)
 print(tree_items)
+print(height(root))
 
 tree_items = []
 root = Node(1, Node(1, Node(0), Node(1)), Node(1, Node(1), Node(0)))
@@ -128,3 +140,6 @@ prune_tree(root)
 tree_items = []
 bfs(root, tree_items)
 print(tree_items)
+
+
+print(height(root))
