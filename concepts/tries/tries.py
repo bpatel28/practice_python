@@ -45,3 +45,22 @@ class Trie:
                 return False
             current = current.children[item[i]]
         return True
+
+    def remove(self, word):
+        if len(word) == 0:
+            return
+        current = self.root
+        node_to_del = None
+
+        for char in word:
+            if char not in current.children:
+                return
+            if current.end_of_word:
+                node_to_del = (current, char)
+            current = current.children[char]
+        if current.end_of_word and len(current.children) == 0:
+            if node_to_del:
+                del node_to_del[0].children[node_to_del[1]]
+            else:
+                del self.root.children[word[0]]
+        current.end_of_word = False
