@@ -8,7 +8,7 @@ def longest_common_subsequence(s1, s2):
 
     for row in range(rows):
         for col in range(cols):
-            if (row == 0 and col != 0) or (col == 0 and row != 0):
+            if row == 0 or col == 0:
                 dp[row][col] = 0
                 continue
             if s1[row-1] == s2[col-1]:
